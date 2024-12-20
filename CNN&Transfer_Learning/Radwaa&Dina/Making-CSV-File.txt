@@ -1,0 +1,16 @@
+import pandas as pd 
+import numpy as np
+
+models_name=['CNN','ResNet152','EfficientNetB2','InceptionV3']
+
+final_report=[0.49742311239242554,0.6191306114196777,0.8589790463447571,0.791773796081543,0.6079710125923157,0.76915043592453,0.8351083397865295,0.7557840347290039]
+final_report = np.array(final_report).reshape(4,4)
+
+model_accuracy=pd.DataFrame(final_report,index=models_name,columns=['Train Loss','Test Loss','Train Accuracy','Test Accuracy'])
+
+model_accuracy.head()
+
+model_accuracy_reset = model_accuracy.reset_index()
+print(model_accuracy_reset)
+
+model_accuracy_reset.to_csv('Egyption_Hieroglyphs_Report.csv',index=False)
